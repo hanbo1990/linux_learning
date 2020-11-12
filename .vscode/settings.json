@@ -1,0 +1,7 @@
+{
+    "clang-format.language.c.style": "file",
+    "clang-format.executable": "/usr/bin/clang-format"
+    // "terminal.integrated.env.linux": {
+    //     "PATH": "${env:PATH}:/home/bo/workspace/linux/stm157/stm32mp157_pro-sdk/ToolChain/arm-buildroot-linux-gnueabihf_sdk-buildroot/bin"
+    // }
+}

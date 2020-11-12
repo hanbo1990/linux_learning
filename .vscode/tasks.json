@@ -1,0 +1,65 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "clean",
+            "type": "shell",
+            "command": "rm -f app",
+            "options": {
+                "cwd": "${workspaceFolder}",
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+        },
+        {
+            "label": "build",
+            "type": "shell",
+            "command": [
+                "echo $CROSS_COMPILE && make && make install && make distclean",
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/01_LCD",
+                "env": {
+                    "ARCH": "arm",
+                    "CROSS_COMPILE": "arm-buildroot-linux-gnueabihf-",
+                    "PATH": "${env:PATH}:/home/bo/workspace/linux/stm157/stm32mp157_pro-sdk/ToolChain/arm-buildroot-linux-gnueabihf_sdk-buildroot/bin/",
+                },
+            },
+            "dependsOn": [
+                "clean",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+        },
+        {
+            "label": "download",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}",
+            },
+            "command": [
+                "scp app root@192.168.127.2:/home/root/",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": [
+                "build"
+            ]
+        },
+        {
+            "label": "preLaunch",
+            "type": "shell",
+            "dependsOn": [
+                "download"
+            ]
+        },
+    ]
+}
