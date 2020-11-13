@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "name": "stm32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/home/bo/workspace/linux/stm157/stm32mp157_pro-sdk/ToolChain/arm-buildroot-linux-gnueabihf_sdk-buildroot/arm-buildroot-linux-gnueabihf/sysroot/usr/include",
+            ],
+            "defines": [],
+            "compilerPath": "/home/bo/workspace/linux/stm157/stm32mp157_pro-sdk/ToolChain/arm-buildroot-linux-gnueabihf_sdk-buildroot/bin/arm-buildroot-linux-gnueabihf-gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "gcc-x64"
+        }
+    ],
+    "version": 4
+}

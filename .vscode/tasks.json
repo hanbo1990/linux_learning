@@ -22,7 +22,7 @@
                 "echo $CROSS_COMPILE && make && make install && make distclean",
             ],
             "options": {
-                "cwd": "${workspaceFolder}/01_LCD",
+                "cwd": "${workspaceFolder}/02_LCD_show_char_freetype",
                 "env": {
                     "ARCH": "arm",
                     "CROSS_COMPILE": "arm-buildroot-linux-gnueabihf-",
