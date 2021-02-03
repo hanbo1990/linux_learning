@@ -25,7 +25,7 @@ BreakAfterJavaFieldAnnotations: 'false'
 BreakBeforeBinaryOperators: None
 BreakBeforeBraces: Linux
 BreakBeforeTernaryOperators: 'true'
-ColumnLimit: '100'
+ColumnLimit: '120'
 CompactNamespaces: 'false'
 IncludeBlocks: Regroup
 IndentCaseLabels: 'false'
