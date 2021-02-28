@@ -1,0 +1,8 @@
+@startuml
+application -> kernel: open (O_RDWR)
+kernel <- application: fd
+application -> kernel: read
+kernel -> kernel: wait for data
+kernel -> kernel: copy data from kernel to user
+kernel <- application: return len, data is ready
+@enduml

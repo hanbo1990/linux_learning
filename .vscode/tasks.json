@@ -6,9 +6,9 @@
         {
             "label": "clean",
             "type": "shell",
-            "command": "rm -f app",
+            "command": "make clean",
             "options": {
-                "cwd": "${workspaceFolder}",
+                "cwd": "${workspaceFolder}/10_touch_screen_project",
             },
             "group": {
                 "kind": "build",
@@ -19,10 +19,10 @@
             "label": "build",
             "type": "shell",
             "command": [
-                "echo $CROSS_COMPILE && make && make install && make distclean",
+                "make",
             ],
             "options": {
-                "cwd": "${workspaceFolder}/02_LCD_show_char_freetype",
+                "cwd": "${workspaceFolder}/10_touch_screen_project",
                 "env": {
                     "ARCH": "arm",
                     "CROSS_COMPILE": "arm-buildroot-linux-gnueabihf-",
@@ -41,10 +41,10 @@
             "label": "download",
             "type": "shell",
             "options": {
-                "cwd": "${workspaceFolder}",
+                "cwd": "${workspaceFolder}/10_touch_screen_project",
             },
             "command": [
-                "scp app root@192.168.127.2:/home/root/",
+                "ls && scp testapp root@10.42.0.2:/home/root/",
             ],
             "group": {
                 "kind": "build",
@@ -55,10 +55,25 @@
             ]
         },
         {
+            "label": "start_gdb_server",
+            "type": "shell",
+            "command": [
+                "ssh root@10.42.0.2 \"gdbserver :9955 ./testapp\""
+            ],
+            "isBackground": true,
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": [
+                "download"
+            ]
+        },
+        {
             "label": "preLaunch",
             "type": "shell",
             "dependsOn": [
-                "download"
+                "start_gdb_server"
             ]
         },
     ]

@@ -1,0 +1,12 @@
+@startuml
+application -> kernel: open (O_RDWR | O_NONBLOCK)
+kernel <- application: fd
+application -> kernel: read
+kernel -> application: return -1
+application -> kernel: read
+kernel -> application: return -1
+kernel -> kernel: data appear
+application -> kernel: read
+kernel -> kernel: copy data from kernel to user
+kernel <- application: return len， data returned to user space
+@enduml
