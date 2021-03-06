@@ -1,0 +1,20 @@
+[
+  {
+    "directory": "/home/bo/workspace/linux/stm157/learn_linux/linux_learning/11_qt",
+    "command": "/usr/bin/g++ -Itest_stm32@exe -I. -Itest_stm32 -I/home/bo/Qt/5.15.2/gcc_64/include -I/home/bo/Qt/5.15.2/gcc_64/include/QtCore -I/home/bo/Qt/5.15.2/gcc_64/include/QtWidgets -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -g -DQT_CORE_LIB -DQT_WIDGETS_LIB -fPIC -MD -MQ 'test_stm32@exe/meson-generated_moc_mainwindow.cpp.o' -MF 'test_stm32@exe/meson-generated_moc_mainwindow.cpp.o.d' -o 'test_stm32@exe/meson-generated_moc_mainwindow.cpp.o' -c 'test_stm32@exe/moc_mainwindow.cpp'",
+    "file": "test_stm32@exe/moc_mainwindow.cpp",
+    "output": "test_stm32@exe/meson-generated_moc_mainwindow.cpp.o"
+  },
+  {
+    "directory": "/home/bo/workspace/linux/stm157/learn_linux/linux_learning/11_qt",
+    "command": "/usr/bin/g++ -Itest_stm32@exe -I. -Itest_stm32 -I/home/bo/Qt/5.15.2/gcc_64/include -I/home/bo/Qt/5.15.2/gcc_64/include/QtCore -I/home/bo/Qt/5.15.2/gcc_64/include/QtWidgets -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -g -DQT_CORE_LIB -DQT_WIDGETS_LIB -fPIC -MD -MQ 'test_stm32@exe/main.cpp.o' -MF 'test_stm32@exe/main.cpp.o.d' -o 'test_stm32@exe/main.cpp.o' -c test_stm32/main.cpp",
+    "file": "test_stm32/main.cpp",
+    "output": "test_stm32@exe/main.cpp.o"
+  },
+  {
+    "directory": "/home/bo/workspace/linux/stm157/learn_linux/linux_learning/11_qt",
+    "command": "/usr/bin/g++ -Itest_stm32@exe -I. -Itest_stm32 -I/home/bo/Qt/5.15.2/gcc_64/include -I/home/bo/Qt/5.15.2/gcc_64/include/QtCore -I/home/bo/Qt/5.15.2/gcc_64/include/QtWidgets -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -g -DQT_CORE_LIB -DQT_WIDGETS_LIB -fPIC -MD -MQ 'test_stm32@exe/mainwindow.cpp.o' -MF 'test_stm32@exe/mainwindow.cpp.o.d' -o 'test_stm32@exe/mainwindow.cpp.o' -c test_stm32/mainwindow.cpp",
+    "file": "test_stm32/mainwindow.cpp",
+    "output": "test_stm32@exe/mainwindow.cpp.o"
+  }
+]
