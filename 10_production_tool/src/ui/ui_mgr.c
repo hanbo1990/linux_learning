@@ -2,7 +2,6 @@
 
 #include <string.h>
 
-#include "main_page.h"
 #include "utils/custom_defines.h"
 
 static struct page* pages = NULL;
@@ -17,6 +16,7 @@ struct page* uimgr_get_page(char* name)
 {
     struct page* tmp = pages;
 
+    // bug here lol
     while (tmp) {
         if (strcmp(tmp->name, name) == 0) {
             return tmp;
@@ -27,7 +27,16 @@ struct page* uimgr_get_page(char* name)
     return 0;
 }
 
-void uimgr_init(void)
+int uimgr_init(void)
 {
-    mainpage_init();
+    /* leave here for now for future extension*/
+
+    return 0;
+}
+
+int uimgr_deinit(void)
+{
+    /* leave here for now for future extension*/
+
+    return 0;
 }

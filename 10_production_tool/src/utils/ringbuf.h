@@ -45,7 +45,22 @@ struct ring_buf{
         .buf_head = alias##_data,\
     };
 
+/**
+ * @brief Push item to ring buffer, ring buffer will copy the data
+ * 
+ * @param buf[in] pointer to the ring buffer
+ * @param data[in] pointer to data to push
+ * @return 0 if success and 1 if fail
+ */
 int ringbuf_push(struct ring_buf *buf, void *data);
+
+/**
+ * @brief Pop item from ring buffer
+ * 
+ * @param buf [in] pointer to the ring buffer
+ * @param data [out] pointer to the buffer to receive output
+ * @return 0 if success and 1 if fail
+ */
 int ringbuf_pop(struct ring_buf *buf, void *data);
 
 #endif /* _RING_BUF_H */

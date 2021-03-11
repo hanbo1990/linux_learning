@@ -1,5 +1,3 @@
-#include "free_type.h"
-
 #include <fcntl.h>
 #include <ft2build.h>
 #include FT_FREETYPE_H
@@ -16,6 +14,7 @@
 
 #include "font_mgr/font_mgr.h"
 #include "utils/custom_defines.h"
+#include "utils/modules.h"
 
 FT_Face face;
 
@@ -41,12 +40,14 @@ static int font_init(char* filename)
 
     return 0;
 }
+
 static int set_font_size(int font_size)
 {
     (void) FT_Set_Pixel_Sizes(face, font_size, 0);
     /* free type can set all size */
     return 0;
 }
+
 static int get_font_bitmap(unsigned int code, struct font_bitmap* bitmap)
 {
     FT_Vector pen;
@@ -83,7 +84,9 @@ static struct font_opt freetype_font = {
     .get_font_bitmap = get_font_bitmap,
 };
 
-int freetype_init(void)
+static int freetype_init(void)
 {
     return fontmgr_register(&freetype_font);
 }
+
+MODULE_EXPORT(freetype_init);

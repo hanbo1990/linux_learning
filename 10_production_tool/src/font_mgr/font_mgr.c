@@ -2,11 +2,24 @@
 
 #include <string.h>
 
-#include "free_type/free_type.h"
 #include "utils/custom_defines.h"
 
 static struct font_opt* font_ctl = NULL;
 static struct font_opt* default_font_ctl = NULL;
+
+int fontmgr_init(void)
+{
+    /* nothing to do here for now */
+
+    return 0;
+}
+
+int fontmgr_deinit(void)
+{
+    /* nothing to do here for now */
+
+    return 0;
+}
 
 int fontmgr_register(struct font_opt* opt)
 {
@@ -16,11 +29,6 @@ int fontmgr_register(struct font_opt* opt)
     font_ctl = opt;
 
     return 0;
-}
-
-int fontmgr_init(void)
-{
-    return freetype_init();
 }
 
 int fontmgr_set_font(char* font_opt_name, char* font_file)

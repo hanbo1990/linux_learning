@@ -4,7 +4,6 @@
 #include <string.h>
 
 #include "font_mgr/font_mgr.h"
-#include "lcd/lcd_display.h"
 #include "utils/custom_defines.h"
 
 static struct display_opr *display_op = NULL;
@@ -12,7 +11,7 @@ static struct display_opr *display_default = NULL;
 
 static struct display_buf dis_buf;
 
-int dismgr_register_display(struct display_opr *new_dis_op)
+int dismgr_register(struct display_opr *new_dis_op)
 {
     RETURN_IF_NOT_SET_WITH_LOG(new_dis_op, "invalid input");
 
@@ -24,7 +23,7 @@ int dismgr_register_display(struct display_opr *new_dis_op)
 
 int dismgr_init(void)
 {
-    lcd_init();
+    /* nothing to do here for now */
 
     return 0;
 }
@@ -47,6 +46,7 @@ int dismgr_set_default(char *name)
 {
     struct display_opr *tmp = display_op;
 
+    // bug here lol
     while (tmp) {
         if (strcmp(name, tmp->name) == 0) {
             display_default = tmp;

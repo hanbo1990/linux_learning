@@ -1,5 +1,3 @@
-#include "socket_input.h"
-
 #include <arpa/inet.h>
 #include <netinet/in.h>
 #include <stdio.h>
@@ -12,11 +10,12 @@
 
 #include "input_mgr/input_mgr.h"
 #include "utils/custom_defines.h"
+#include "utils/modules.h"
 
 #define SERVER_PORT 2222
 
-int fd;
-socklen_t addr_len = sizeof(struct sockaddr);
+static int fd;
+static socklen_t addr_len = sizeof(struct sockaddr);
 
 static int get_event(struct input_event* input_event)
 {
@@ -90,7 +89,9 @@ static struct input_device device = {
     .dev_deinit = dev_deinit,
 };
 
-int socket_input_init(void)
+static int socket_input_init(void)
 {
     return inputmgr_resigter(&device);
 }
+
+MODULE_EXPORT(socket_input_init);

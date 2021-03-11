@@ -1,5 +1,3 @@
-#include "lcd_display.h"
-
 #include <fcntl.h>
 #include <linux/fb.h>
 #include <stdbool.h>
@@ -14,6 +12,7 @@
 
 #include "display_mgr/display_mgr.h"
 #include "utils/custom_defines.h"
+#include "utils/modules.h"
 
 static bool init_status = false;
 static int fb_fd;
@@ -70,7 +69,7 @@ static int device_deinit(void)
  * application is directly wirting to LCD, then the flush_region
  * can be empty.
  */
-int get_buf(struct display_buf *dis_buf)
+static int get_buf(struct display_buf *dis_buf)
 {
     RETURN_IF_NOT_SET_WITH_LOG(init_status, "device not inited");
 
@@ -80,6 +79,7 @@ int get_buf(struct display_buf *dis_buf)
     dis_buf->buf = fb_mmap;
     return 0;
 }
+
 static int flush_region(struct region *region, struct display_buf *dis_buf)
 {
     RETURN_IF_NOT_SET_WITH_LOG(init_status, "device not inited");
@@ -95,7 +95,9 @@ static struct display_opr display_operation = {
     .flush_region = flush_region,
 };
 
-int lcd_init(void)
+static int lcd_init(void)
 {
-    return dismgr_register_display(&display_operation);
+    return dismgr_register(&display_operation);
 }
+
+MODULE_EXPORT(lcd_init);

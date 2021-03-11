@@ -7,6 +7,7 @@ int main(int argc, char** argv)
     struct ts_event_data* ts_data;
     struct report_event_data* report_data;
     inputmgr_init();
+    inputmgr_init_all_devices();
     while (1) {
         if (!inputmgr_get_event(&input_event)) {
             if (input_event.type == EVENT_TYPE__TOUCH_SCREEN) {
@@ -16,7 +17,7 @@ int main(int argc, char** argv)
             } else if (input_event.type == EVENT_TYPE__STR_REPORT) {
                 report_data = (struct report_event_data*) input_event.data;
                 LOG_INFO("received str data %s", report_data->str);
-                report_data->str_used(report_data);
+                report_data->data_used(report_data);
             } else {
                 LOG_INFO("WHAT!");
             }

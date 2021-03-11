@@ -1,10 +1,9 @@
-#include "touch_screen.h"
-
 #include <stdlib.h>
 #include <tslib.h>
 
 #include "input_mgr/input_mgr.h"
 #include "utils/custom_defines.h"
+#include "utils/modules.h"
 
 static struct tsdev* dev;
 
@@ -56,7 +55,9 @@ static struct input_device device = {
     .dev_deinit = dev_deinit,
 };
 
-int touchscreen_init(void)
+static int touchscreen_init(void)
 {
     return inputmgr_resigter(&device);
 }
+
+MODULE_EXPORT(touchscreen_init);

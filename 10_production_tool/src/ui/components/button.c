@@ -3,7 +3,7 @@
 
 #include <string.h>
 
-int default_on_draw(struct button *button, struct display_buf *buf)
+static int default_on_draw(struct button *button, struct display_buf *buf)
 {
     dismgr_draw_region(&button->region, COLOR_DEFAULT_BUTTON);
     dismgr_draw_text_in_region(button->text, &button->region, COLOR_DEFAULT_TEXT);
@@ -11,7 +11,8 @@ int default_on_draw(struct button *button, struct display_buf *buf)
     return 0;
 }
 
-int default_on_press(struct button *button, struct display_buf *buf, struct input_event *event)
+static int default_on_press(struct button *button, struct display_buf *buf,
+                            struct input_event *event)
 {
     unsigned int color = COLOR_DEFAULT_BUTTON;
     button->is_pressed = !button->is_pressed;

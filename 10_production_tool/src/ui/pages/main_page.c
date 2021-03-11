@@ -1,16 +1,15 @@
-#include "main_page.h"
-
 #include <math.h>
 #include <stdio.h>
 #include <string.h>
 #include <sys/types.h>
 #include <unistd.h>
 
-#include "components/button.h"
 #include "config.h"
 #include "display_mgr/display_mgr.h"
-#include "ui_mgr.h"
+#include "ui/components/button.h"
+#include "ui/ui_mgr.h"
 #include "utils/custom_defines.h"
+#include "utils/modules.h"
 
 #define X_GAP 5U
 #define Y_GAP 5U
@@ -18,7 +17,7 @@
 static struct button btns[CONFIG_MAX_NUMBER];
 static int btn_number;
 
-int btn_on_press(struct button* button, struct display_buf* buf, struct input_event* event)
+static int btn_on_press(struct button* button, struct display_buf* buf, struct input_event* event)
 {
     int color = COLOR_DEFAULT_BUTTON;
     struct report_event_data* report_data;
@@ -138,7 +137,7 @@ static int is_touch_point_in_region(int x, int y, struct region* region)
     return 1;
 }
 
-struct button* get_button_by_event(struct input_event* event)
+static struct button* get_button_by_event(struct input_event* event)
 {
     int i;
     struct ts_event_data* touch_data;
@@ -164,7 +163,7 @@ struct button* get_button_by_event(struct input_event* event)
                 return &btns[i];
             }
         }
-        report_data->str_used(report_data);
+        report_data->data_used(report_data);
         return NULL;
     } else {
         return NULL;
@@ -203,12 +202,15 @@ void run_page(void* params)
     }
 }
 
-struct page main_page = {
+static struct page main_page = {
     .name = "main",
     .run = run_page,
 };
 
-void mainpage_init(void)
+static int mainpage_init(void)
 {
     uimgr_resiter_page(&main_page);
+    return 0;
 }
+
+MODULE_EXPORT(mainpage_init);
